@@ -40,12 +40,12 @@ La respuesta debe estar en formato JSON, como un **array de objetos**, así:
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer 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",
+        "Authorization": "Bearer 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",
         "HTTP-Referer": "https://tusitio.com",
         "X-Title": "AnalisisCostosFijos"
       },
       body: JSON.stringify({
-        model: "mistralai/mixtral-8x7b-instruct",
+        model: "mistralai/mistral-7b-instruct",
         messages: [{ role: "user", content: prompt }],
         temperature: 0.5
       })
