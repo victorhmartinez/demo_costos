@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="conexion.js"></script>
+    <title>Simulador de costos </title>
+</head>
+<body>
+   <h2>Simulador de costos fijos</h2>
+
+  <label>¿Cuánto pagas de alquiler al mes?</label>
+  <input type="number" id="alquiler" placeholder="Ej: 500" />
+
+  <label>¿Cuánto pagas en sueldos al mes?</label>
+  <input type="number" id="sueldos" placeholder="Ej: 1200" />
+
+  <label>¿Cuánto gastas en servicios (agua, luz, internet)?</label>
+  <input type="number" id="servicios" placeholder="Ej: 300" />
+
+  <button onclick="analizarCostos()">Analizar con IA</button>
+
+  <div id="respuesta">
+    <p><strong>Recomendaciones con IA</strong></p>
+ 
+  </div>
+</body>
+</html>
