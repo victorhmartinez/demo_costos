@@ -3,7 +3,7 @@ async function analizarCostos() {
   const sueldos = document.getElementById('sueldos').value;
   const servicios = document.getElementById('servicios').value;
 
-const prompt = `Actúa como un asesor financiero experto en cafeterías ubicadas en Quito, Ecuador.
+  const prompt = `Actúa como un asesor financiero experto en cafeterías ubicadas en Quito, Ecuador.
 
 Te presento los costos fijos mensuales de una cafetería:
 - Alquiler mensual: $${alquiler}
@@ -36,22 +36,14 @@ La respuesta debe estar en formato JSON, como un **array de objetos**, así:
   document.getElementById("respuesta").innerHTML = "⏳ Consultando IA...";
 
   try {
-    const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer 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",
-        "HTTP-Referer": "https://tusitio.com",
-        "X-Title": "AnalisisCostosFijos"
-      },
-      body: JSON.stringify({
-        model: "mistralai/mistral-7b-instruct",
-        messages: [{ role: "user", content: prompt }],
-        temperature: 0.5
-      })
-    });
 
+    const res = await fetch("https://backend-costos.onrender.com/analizar", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ prompt })
+    });
     const data = await res.json();
+    console.log(data)
     const content = data.choices?.[0]?.message?.content;
 
     if (!content) {
@@ -85,7 +77,7 @@ La respuesta debe estar en formato JSON, como un **array de objetos**, así:
 function renderizarRecomendaciones(data) {
   const contenedor = document.getElementById("respuesta");
   contenedor.innerHTML = "<p><strong>Recomendaciones con IA</strong></p>";
-console.log(data)
+  console.log(data)
   data.forEach((reco, index) => {
     const prioridadClase = reco.prioridad.toLowerCase(); // alta, media, baja
 
