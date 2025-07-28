@@ -19,6 +19,7 @@ document.getElementById("respuesta").innerHTML = `
 
   const prompt = `Rol: Actúa como un asesor financiero de élite y analista de riesgos, especializado en la rentabilidad y optimización de costos para cafeterías en Quito, Ecuador. Tu análisis debe ser preciso, práctico y basado en datos del mercado local.
 Contexto: Soy un emprendedor con una cafetería en Quito y necesito un diagnóstico financiero experto. Te proporcionaré la ubicación exacta y mi lista de costos fijos mensuales. Tu misión es auditar estos números, identificar puntos ciegos en mi presupuesto y alertarme sobre los riesgos operativos y financieros que estoy corriendo.
+No tomes los salarios como un costo fijos. Vamos ignorar todo lo que tenga que ver con salarios
 Información del Negocio:
 Ubicación (Zona/Barrio en Quito):${ubicacion}
 Costos Fijos Mensuales Identificados:
