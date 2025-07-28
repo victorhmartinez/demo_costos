@@ -99,7 +99,7 @@ console.log(prompt);
 
   try {
 
-    const res = await fetch("http://localhost:4000/analizar", {
+    const res = await fetch("https://backend-costos.onrender.com/analizar", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ prompt })
