@@ -1,104 +1,34 @@
-  body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      background: #f0f0f0;
-    }
-    input, textarea, button {
-      margin: 10px 0;
-      padding: 10px;
-      width: 100%;
-      font-size: 1em;
-    }
-    #respuesta {
-      background: #fff;
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 20px;
-    }
-
-
-/*Estilos card*/
-  .container {
-      max-width: 700px;
-      margin: auto;
-    }
-
-    .titulo {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-      color: #333;
-      font-weight: bold;
-    }
-
-    .card {
-      background: white;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 16px;
-      margin-bottom: 16px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-
-    .card h3 {
-      margin-top: 0;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      font-size: 1rem;
-    }
-
-    .icon {
-      margin-right: 8px;
-    }
-
-    .info {
-      color: #555;
-      margin-bottom: 12px;
-    }
-
-    .tags {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.85rem;
-    }
-
-    .prioridad {
-      padding: 4px 8px;
-      border-radius: 5px;
-      color: white;
-      font-weight: bold;
-    }
-
-    .alta {
-      background: #e74c3c;
-    }
-
-    .media {
-      background: #3498db;
-    }
-
-    .baja {
-      background: #d35400;
-    }
-
-    .ahorro {
-      color: #27ae60;
-      font-weight: bold;
-    }
-
-    .btn-toggle {
-      background: #f1f5f9;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      margin-top: 10px;
-    }
-
-    .detalle {
-      margin-top: 10px;
-      color: #333;
+.section {
       display: none;
+    }
+    .section.active {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    #main-container {
+        height: 700px;
+    }
+    .nav-container {
+        background: linear-gradient(90deg, #e5e7eb, #d1d5db);
+        border-radius: 9999px;
+        padding: 0.25rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .nav-button {
+        transition: all 0.3s ease;
+        border-radius: 9999px;
+        padding: 0.625rem 1.25rem;
+        font-weight: 600;
+        position: relative;
+        z-index: 10;
+        color: #1f2937;
+    }
+    .nav-button.active {
+        color: black !important;
+        background-color: white !important;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+    .nav-button:not(.active):hover {
+        background-color: #f3f4f6;
     }

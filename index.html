@@ -1,29 +1,262 @@
+<p></p>
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="conexion.js"></script>
-    <title>Simulador de costos </title>
-</head>
-<body>
-   <h2>Simulador de costos fijos</h2>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo - Simulador de Cafetería</title>
 
-  <label>¿Cuánto pagas de alquiler al mes?</label>
-  <input type="number" id="alquiler" placeholder="Ej: 500" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 min-h-screen p-4 sm:p-6 flex flex-col">
+    <div
+      class="flex-1 flex items-center justify-center w-full max-w-6xl mx-auto"
+    >
+      <div class="w-full h-full flex flex-col">
+        <!-- Navigation -->
+        <nav class="mb-6 w-full py-4">
+          <div class="nav-container relative">
+            <ul class="flex relative z-20">
+              <li class="flex-1">
+                <button
+                  id="btn-info"
+                  onclick="switchSection('info')"
+                  class="nav-button w-full text-center text-sm active"
+                >
+                  INFORMACIÓN
+                </button>
+              </li>
+              <li class="flex-1">
+                <button
+                  id="btn-costs"
+                  onclick="switchSection('costs')"
+                  class="nav-button w-full text-center text-sm"
+                >
+                  COSTOS FIJOS
+                </button>
+              </li>
+              <li class="flex-1">
+                <button
+                  id="btn-intelligence"
+                  onclick="switchSection('intelligence')"
+                  class="nav-button w-full text-center text-sm"
+                >
+                  RESULTADOS IA
+                </button>
+              </li>
+            </ul>
+          </div>
+        </nav>
 
-  <label>¿Cuánto pagas en sueldos al mes?</label>
-  <input type="number" id="sueldos" placeholder="Ej: 1200" />
+        <!-- Main Container -->
+        <div
+          id="main-container"
+          class="flex flex-col rounded-xl bg-white p-6 shadow-xl overflow-hidden"
+        >
+          <!-- Information Section -->
+          <div id="section-info" class="section active">
+            <div class="flex h-full w-full flex-col gap-6 lg:flex-row">
+              <!-- Left Column -->
+              <div class="flex flex-1 flex-col space-y-6">
+                <div
+                  class="rounded-xl bg-gradient-to-br from-blue-50 to-indigo-50 p-6 shadow-inner"
+                >
+                  <h2 class="mb-4 text-2xl font-bold text-blue-800">
+                    Simulador
+                  </h2>
+                  <div class="prose max-w-none">
+                    <p class="leading-relaxed text-gray-700">
+                      Bienvenido al simulador de cafetería. Ingresa los datos de
+                      tu negocio para comenzar con el análisis.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="flex-1 rounded-xl bg-gradient-to-br from-gray-50 to-blue-50 p-6 shadow-inner flex items-center justify-center"
+                >
+                  <div class="text-center">
+                    <div class="mb-3 text-4xl">📽️</div>
+                    <h3 class="text-lg font-semibold text-gray-700 mb-1">
+                      Video Instructivo
+                    </h3>
+                    <p class="text-sm text-gray-500">
+                      Haz clic para reproducir
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <!-- Right Column - Form -->
+              <div class="flex flex-col space-y-6 lg:w-1/3">
+                <div
+                  class="rounded-xl bg-gradient-to-br from-white to-gray-50 p-6 shadow-md border border-gray-100"
+                >
+                  <h2 class="mb-5 text-xl font-bold text-gray-800">
+                    Datos de la Cafetería
+                  </h2>
+                  <div class="space-y-5">
+                    <div>
+                      <label
+                        class="mb-2 block text-sm font-medium text-gray-700"
+                      >
+                        Nombre de la Cafetería
+                      </label>
+                      <input
+                        type="text"
+                        id="cafe-name"
+                        placeholder="Nombre de tu cafetería"
+                        class="w-full rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        class="mb-2 block text-sm font-medium text-gray-700"
+                      >
+                        Ubicación
+                      </label>
+                      <select
+                        id="cafe-location"
+                        class="w-full rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none"
+                      >
+                        <option value="">Selecciona la ubicación</option>
+                        <option value="norte">Norte</option>
+                        <option value="centro-norte">Centro Norte</option>
+                        <option value="centro-sur">Centro Sur</option>
+                        <option value="sur">Sur</option>
+                        <option value="otros">Otros</option>
+                      </select>
+                    </div>
+                    <button
+                      type="button"
+                      onclick="switchSection('costs')"
+                      class="w-full rounded-full bg-gradient-to-r from-blue-600 to-blue-700 px-4 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:from-blue-700 hover:to-blue-800 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    >
+                      Siguiente
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-  <label>¿Cuánto gastas en servicios (agua, luz, internet)?</label>
-  <input type="number" id="servicios" placeholder="Ej: 300" />
+          <!-- Fixed Costs Section -->
+          <div id="section-costs" class="section h-full flex flex-col">
+            <div
+              class="flex min-h-0 flex-1 flex-col rounded-xl bg-gradient-to-b from-white to-gray-50 p-6 shadow-inner"
+            >
+              <h2 class="mb-5 text-xl font-bold text-gray-800">
+                Costos Fijos de la Cafetería
+              </h2>
 
-  <button onclick="analizarCostos()">Analizar con IA</button>
+              <!-- Scrollable cost items area -->
+              <div class="mb-5 min-h-0 flex-1">
+                <div
+                  id="cost-items-container"
+                  class="h-full space-y-4 overflow-y-auto pr-2"
+                >
+                  <!-- Initial cost item -->
+                  <div class="cost-item flex gap-3 items-start">
+                    <div class="flex-1">
+                      <input
+                        type="text"
+                        placeholder="Nombre del costo (ej: Alquiler)"
+                        class="cost-name w-full rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none"
+                      />
+                    </div>
+                    <div class="w-32">
+                      <input
+                        type="number"
+                        placeholder="Monto"
+                        class="cost-amount w-full rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none"
+                      />
+                    </div>
+                    <div class="flex items-center pt-3">
+                      <button
+                        type="button"
+                        class="remove-item p-2 text-gray-400 hover:text-red-500 transition-colors rounded-full hover:bg-red-50"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="h-5 w-5"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                            clip-rule="evenodd"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-  <div id="respuesta">
-    <p><strong>Recomendaciones con IA</strong></p>
- 
+              <!-- Fixed bottom section -->
+              <div class="space-y-5 pt-5 border-t border-gray-200">
+                <button
+                  onclick="createCostItem()"
+                  type="button"
+                  id="add-cost-btn"
+                  class="flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-50 to-indigo-50 px-4 py-2.5 text-sm font-semibold text-blue-700 transition-all hover:from-blue-100 hover:to-indigo-100 shadow-sm border border-blue-200"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  Agregar Costo
+                </button>
+                <div
+                  class="rounded-xl bg-gradient-to-r from-amber-50 to-yellow-100 p-5 border border-amber-200"
+                >
+                  <div class="flex items-center justify-between">
+                    <span class="font-semibold text-amber-800">
+                      Total Costos Mensuales:
+                    </span>
+                    <span
+                      id="total-cost"
+                      class="text-2xl font-bold text-amber-600"
+                    >
+                      $0.00
+                    </span>
+                  </div>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3">
+                  <button
+                    type="button"
+                    id="analyze-btn"
+                    class="flex-1 rounded-full bg-gradient-to-r from-green-600 to-green-700 px-6 py-3.5 text-sm font-semibold text-white shadow-lg transition-all hover:from-green-700 hover:to-green-800 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                  >
+                    Analizar con IA
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sección de Resultados IA -->
+       <div id="section-intelligence" class="section hidden px-6 py-8 overflow-y-auto">
+  <h2 class="text-2xl font-bold mb-4">
+    Resultados del Análisis con IA
+  </h2>
+  <div id="respuesta" class="space-y-4">
+    <!-- Aquí se insertarán las tarjetas generadas por IA -->
   </div>
-</body>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
+    <script src="conexion.js"></script>
+  </body>
 </html>
